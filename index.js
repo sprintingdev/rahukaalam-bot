@@ -15,7 +15,7 @@ var client = new Twitter({
 
 client.stream('statuses/filter', {track: botName}, function(stream) {
   stream.on('data', function(tweet) {
-    if(tweet.text.toLowerCase().indexOf("what time today")) {
+    if(tweet.text.toLowerCase().indexOf("what time today")> -1 ) {
     	var date = moment();
 			date.utc();
 			var tweetMessage =  '@' + tweet.user.screen_name + ' The timings for today is ' + rahukaalamTimes[date.utcOffset("05:30").day()];
