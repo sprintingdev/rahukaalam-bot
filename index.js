@@ -1,7 +1,7 @@
 var Twitter = require('twitter');
-var TweetPoster = require('./tweetPoster');
+var TweetPoster = require('./services/tweetPoster');
 var moment = require('moment');
-var RKCalculator = require('./rkCalculator');
+var RKCalculator = require('./services/rkCalculator');
 
 var botName = "@rahukaalam_bot";
 
@@ -15,7 +15,7 @@ var client = new Twitter({
 
 client.stream('statuses/filter', {track: botName}, function(stream) {
   stream.on('data', function(tweet) {
-    TweetPoster.reply(client, tweet, function(){
+    TweetPoster.reply(client, tweet, function(tweet){
       RKCalculator.calculateTime({sunrise: "06:00", sunset: "18:00"}, function(){
         var date = moment();
         date.utc();

@@ -1,4 +1,4 @@
-var RKCalculator = require("../rkCalculator");
+var RKCalculator = require("../services/rkCalculator");
 
 jasmine.getEnv().defaultTimeoutInterval = 10000;
 
